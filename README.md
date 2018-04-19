@@ -39,3 +39,48 @@
 - 从主库的master分支上pull最新的代码到本地。
 - 此时会产生冲突，手工修复冲突，然后先commit到本地的个人工作库，再push到个人代码库（服务端）。
 - 提交从个人工作库（服务端）到主库的MR（此时不会再有冲突），然后由Committer审核后将MR合入主库。
+
+## 开发工具及流程中常见问题解决方案
+
+> 有飞墙软件的同学可以在开发过程中打开，避免一些因为墙高导致的问题产生。
+
+### node
+
+开发之前请确保你已经安装了node环境。
+[node的下载和安装](https://note.youdao.com/)
+
+### `yarn` 包管理工具
+
+`Yarn` 缓存了每个下载过的包，所以再次使用时无需重复下载。同时利用并行下载以最大化资源利用率，因此安装速度更快。
+
+[Yarn中文网有相关下载安装和说明](https://yarn.bootcss.com/)
+
+> `yarn` 不是必须的，有兴趣的同学或者在使用 `npm` 的时候产生问题了可以安装和使用。
+
+### 遇到部分包安装出现问题？
+
+1. 使用 `cnpm` 替代 `npm`
+
+```
+$ npm install -g cnpm --registry=https://registry.npm.taobao.org
+```
+
+2. 使用 `nrm` 管理 `npm`
+
+```
+$ npm install -g nrm
+
+$ nrm ls
+
+  npm ---- https://registry.npmjs.org/
+* cnpm --- http://r.cnpmjs.org/
+  taobao - https://registry.npm.taobao.org/
+  nj ----- https://registry.nodejitsu.com/
+  rednpm - http://registry.mirror.cqupt.edu.cn/
+  npmMirror  https://skimdb.npmjs.com/registry/
+  edunpm - http://registry.enpmjs.org/
+
+$ nrm use taobao
+  
+$ npm install
+```
